@@ -16,8 +16,18 @@ dotenv.config();
 
 const app = express();
 
+const allowedOrigins = (process.env.CLIENT_URLS || process.env.CLIENT_URL || "")
+    .split(",")
+    .map((v) => v.trim())
+    .filter(Boolean);
+
 app.use(cors({
-    origin: process.env.CLIENT_URL,
+    origin: (origin, callback) => {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.length === 0) return callback(null, true);
+        if (allowedOrigins.includes(origin)) return callback(null, true);
+        return callback(new Error("CORS blocked"));
+    },
     credentials: true
 }));
 app.use(express.json({ limit: "10mb" }));
