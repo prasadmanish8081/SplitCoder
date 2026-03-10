@@ -76,16 +76,24 @@ SplitCoder is a full-stack learning platform that teaches Python via structured 
    ```
 
 ## Seed Data
-Seed scripts live in `backend/src/seed/` and insert initial topics, problems, and tutorial quiz data.
+Seed scripts live in `backend/src/seed/`. Run them from the `backend/` folder.
 
 1. Ensure `backend/.env` has a valid `MONGO_URI`.
-2. Run seeds (from `backend/`):
+2. Run the seed/update scripts you need:
    ```bash
    node src/seed/python_dsa_seed.js
    node src/seed/tutorial_quiz_seed.js
+   node src/seed/update_topic_concepts.js
+   node src/seed/update_topic_concepts_detailed.js
+   node src/seed/update_topic_examples.js
    ```
 Notes:
-- The seed scripts are idempotent and skip records that already exist.
+- `python_dsa_seed.js` inserts topics and problems.
+- `tutorial_quiz_seed.js` inserts tutorial quiz data.
+- `update_topic_concepts.js` updates topic concepts.
+- `update_topic_concepts_detailed.js` updates detailed concepts.
+- `update_topic_examples.js` updates topic examples.
+- The scripts are idempotent and skip records that already exist.
 - Run seeds only once per database (or after clearing collections).
 
 ## Scripts
