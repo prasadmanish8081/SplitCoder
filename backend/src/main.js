@@ -11,6 +11,8 @@ import problemRoutes from "./routes/problemRoutes.js";
 import instructionRoutes from "./routes/instructionRoutes.js";
 import tutorialRoutes from "./routes/tutorialRoutes.js";
 import tutorialProgressRoutes from "./routes/tutorialProgressRoutes.js";
+import microtestRoutes from "./routes/microtestRoutes.js";
+import credentialRoutes from "./routes/credentialRoutes.js";
 
 dotenv.config();
 
@@ -49,6 +51,8 @@ app.use("/api/problems", problemRoutes);
 app.use("/api/instructions", instructionRoutes);
 app.use("/api/tutorials", tutorialRoutes);
 app.use("/api/tutorial-progress", tutorialProgressRoutes);
+app.use("/api/microtests", microtestRoutes);
+app.use("/api/credentials", credentialRoutes);
 
 
 const PORT = process.env.PORT || 5000;

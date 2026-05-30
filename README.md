@@ -111,21 +111,24 @@ Notes:
 - Ensure the backend URL used by the frontend matches your API host/port.
 - Add any additional environment variables required by your project.
 
-## Deployment (Vercel + Render)
+## Deployment (Render)
 
-### Frontend on Vercel
+### Frontend on Render
+- Service Type: Static Site
 - Root Directory: `frontend`
-- Build Command: `npm run build`
-- Output Directory: `dist`
+- Build Command: `npm install && npm run build`
+- Publish Directory: `dist`
 - Env: `VITE_API_URL = https://<your-render-backend-domain>`
 
 ### Backend on Render
+- Service Type: Web Service
 - Root Directory: `backend`
 - Build Command: `npm install`
 - Start Command: `npm start`
 - Env:
   - `MONGO_URI`
   - `JWT_SECRET`
-  - `CLIENT_URLS` = `https://<your-vercel-domain>` (comma-separated if multiple)
+  - `CLIENT_URL` = your frontend URL, for example `https://<your-render-frontend-domain>`
+  - `CLIENT_URLS` = optional comma-separated list of allowed frontend URLs
   - `HF_API_TOKEN`
   - `HF_MODEL`

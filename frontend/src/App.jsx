@@ -22,6 +22,9 @@ import TutorialPlayer from "./pages/student/TutorialPlayer";
 import Notebook from "./pages/student/Notebook";
 import ProgressPage from "./pages/student/Progress";
 import Home from "./pages/Home";
+import MicroTests from "./pages/student/MicroTests";
+import MicroTestTake from "./pages/student/MicroTestTake";
+import CredentialView from "./pages/student/CredentialView";
 
 const App = () => {
   useEffect(() => {
@@ -147,6 +150,24 @@ const App = () => {
         <Route path="/learn/:topicId" element={
           <StudentPrivateRoute>
             <Learn/>
+          </StudentPrivateRoute>
+        }/>
+
+        <Route path="/microtests" element={
+          <StudentPrivateRoute>
+            <MicroTests/>
+          </StudentPrivateRoute>
+        }/>
+
+        <Route path="/microtests/:id" element={
+          <StudentPrivateRoute>
+            <MicroTestTake/>
+          </StudentPrivateRoute>
+        }/>
+
+        <Route path="/credentials/:id" element={
+          <StudentPrivateRoute>
+            <CredentialView/>
           </StudentPrivateRoute>
         }/>
 
